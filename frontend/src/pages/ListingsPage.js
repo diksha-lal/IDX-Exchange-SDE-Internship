@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchProperties } from "../api/client";
 import PropertyCard from "../components/PropertyCard";
+import PropertyFilters from "../components/PropertyFilters";
 
 function ListingsPage() {
   const [properties, setProperties] = useState([]);
@@ -8,8 +9,10 @@ function ListingsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetchProperties({ limit: 20, offset: 0 })
+  const loadProperties = (filters = {}) => {
+    setLoading(true);
+    setError(null);
+    fetchProperties({ limit: 20, offset: 0, ...filters })
       .then((data) => {
         setProperties(data.results);
         setTotal(data.total);
@@ -19,20 +22,34 @@ function ListingsPage() {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  };
 
-  if (loading) return <div className="status-message">Loading properties...</div>;
-  if (error) return <div className="status-message error">Error: {error}</div>;
+  useEffect(() => {
+    loadProperties();
+  }, []);
 
   return (
     <div className="listings-page">
       <h1>Property Listings</h1>
-      <p className="results-count">Showing {properties.length} of {total} properties</p>
-      <div className="property-grid">
-        {properties.map((property) => (
-          <PropertyCard key={property.L_ListingID} property={property} />
-        ))}
-      </div>
+      <PropertyFilters onSearch={loadProperties} />
+      {loading && <div className="status-message">Loading properties...</div>}
+      {error && <div className="status-message error">Error: {error}</div>}
+      {!loading && !error && (
+        <>
+          <p className="results-count">
+            Showing {properties.length} of {total} properties
+          </p>
+          {properties.length === 0 ? (
+            <div className="status-message">No properties found.</div>
+          ) : (
+            <div className="property-grid">
+              {properties.map((property) => (
+                <PropertyCard key={property.L_ListingID} property={property} />
+              ))}
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 }
