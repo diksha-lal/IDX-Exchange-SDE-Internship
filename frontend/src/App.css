@@ -136,3 +136,42 @@ body {
   background: #e0e0e0;
   color: #333;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 30px;
+  padding-bottom: 40px;
+}
+
+.pagination button {
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #2c3e50;
+  color: white;
+}
+
+.pagination button.active {
+  background: #2c3e50;
+  color: white;
+  border-color: #2c3e50;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination .ellipsis {
+  padding: 8px 4px;
+  color: #666;
+}
