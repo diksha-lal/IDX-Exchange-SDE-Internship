@@ -175,3 +175,240 @@ body {
   padding: 8px 4px;
   color: #666;
 }
+
+.detail-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #2c3e50;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+
+.gallery {
+  margin-bottom: 20px;
+}
+
+.gallery-main {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-thumbnails {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.gallery-thumbnails img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.7;
+  border: 2px solid transparent;
+}
+
+.gallery-thumbnails img.active,
+.gallery-thumbnails img:hover {
+  opacity: 1;
+  border-color: #2c3e50;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightbox-content img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.lightbox-prev { left: -60px; }
+.lightbox-next { right: -60px; }
+
+.lightbox-prev:disabled,
+.lightbox-next:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.lightbox-counter {
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+}
+
+.detail-content {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.detail-price {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.detail-address {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.detail-location {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.detail-stats {
+  display: flex;
+  gap: 20px;
+  padding: 15px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.stat {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.stat span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+  display: block;
+}
+
+.detail-section {
+  margin-bottom: 25px;
+}
+
+.detail-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 5px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.property-map {
+  margin-bottom: 25px;
+}
+
+.property-map h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 5px;
+}
+
+.directions-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #2c3e50;
+  text-decoration: underline;
+}
+
+.open-house-item {
+  background: #f9f9f9;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.open-house-date {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.open-house-time {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.open-house-remarks {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 6px;
+}
+
+.gallery-no-photo {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}

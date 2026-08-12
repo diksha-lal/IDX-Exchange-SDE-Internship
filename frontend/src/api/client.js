@@ -33,4 +33,15 @@ async function fetchPropertyDetail(id) {
   return response.json();
 }
 
-export { fetchProperties, fetchPropertyDetail };
+async function fetchOpenHouses(id) {
+  const response = await fetch(`${BASE_URL}/properties/${id}/openhouses`);
+
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.error || "Failed to fetch open houses");
+  }
+
+  return response.json();
+}
+
+export { fetchProperties, fetchPropertyDetail, fetchOpenHouses };

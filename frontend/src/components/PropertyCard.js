@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 function PropertyCard({ property }) {
+  const navigate = useNavigate();
+
   let photos = [];
   try {
     photos = JSON.parse(property.L_Photos);
@@ -6,15 +10,21 @@ function PropertyCard({ property }) {
     photos = [];
   }
 
-  const firstPhoto = Array.isArray(photos) && photos.length > 0 ? photos[0] : null;
+  if (!Array.isArray(photos)) photos = [];
+
+  const firstPhoto = photos.length > 0 ? photos[0] : null;
 
   const formatPrice = (price) => {
     if (!price) return "Price not available";
     return "$" + price.toLocaleString();
   };
 
+  const handleClick = () => {
+    navigate(`/property/${property.L_ListingID}`);
+  };
+
   return (
-    <div className="property-card">
+    <div className="property-card" onClick={handleClick}>
       <div className="property-card-image">
         {firstPhoto ? (
           <img src={firstPhoto} alt={property.L_Address} />
