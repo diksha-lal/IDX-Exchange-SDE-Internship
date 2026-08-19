@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function PropertyCard({ property }) {
+function PropertyCard({ property, onFavoriteToggle, isFavorited }) {
   const navigate = useNavigate();
 
   let photos = [];
@@ -23,6 +23,11 @@ function PropertyCard({ property }) {
     navigate(`/property/${property.L_ListingID}`);
   };
 
+  const handleFavoriteClick = (e) => {
+    e.stopPropagation();
+    onFavoriteToggle(property);
+  };
+
   return (
     <div className="property-card" onClick={handleClick}>
       <div className="property-card-image">
@@ -31,6 +36,9 @@ function PropertyCard({ property }) {
         ) : (
           <div className="no-photo">No Photo Available</div>
         )}
+        <button className="favorite-btn" onClick={handleFavoriteClick}>
+          {isFavorited ? "❤️" : "🤍"}
+        </button>
       </div>
       <div className="property-card-info">
         <div className="property-price">{formatPrice(property.L_SystemPrice)}</div>

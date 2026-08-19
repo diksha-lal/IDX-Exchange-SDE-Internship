@@ -4,7 +4,7 @@ import PropertyCard from "../components/PropertyCard";
 import PropertyFilters from "../components/PropertyFilters";
 import Pagination from "../components/Pagination";
 
-function ListingsPage() {
+function ListingsPage({ onFavoriteToggle, isFavorite }) {
   const [properties, setProperties] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -65,7 +65,12 @@ function ListingsPage() {
           ) : (
             <div className="property-grid">
               {properties.map((property) => (
-                <PropertyCard key={property.L_ListingID} property={property} />
+                <PropertyCard
+                  key={property.L_ListingID}
+                  property={property}
+                  onFavoriteToggle={onFavoriteToggle}
+                  isFavorited={isFavorite(property.L_ListingID)}
+                />
               ))}
             </div>
           )}
