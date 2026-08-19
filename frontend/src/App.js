@@ -3,6 +3,7 @@ import ListingsPage from "./pages/ListingsPage";
 import PropertyDetailPage from "./pages/PropertyDetailPage";
 import FavoritesPage from "./pages/FavoritesPage";
 import useFavorites from "./hooks/useFavorites";
+import ErrorBoundary from "./components/ErrorBoundary";
 import "./App.css";
 
 function AppContent() {
@@ -55,7 +56,9 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <AppContent />
+        <ErrorBoundary>
+          <AppContent />
+        </ErrorBoundary>
       </div>
     </BrowserRouter>
   );
