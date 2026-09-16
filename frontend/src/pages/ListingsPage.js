@@ -51,7 +51,6 @@ function ListingsPage({ onFavoriteToggle, isFavorite }) {
 
   return (
     <div className="listings-page">
-      <h1>Property Listings</h1>
       <PropertyFilters onSearch={handleSearch} />
       {loading && <div className="status-message">Loading properties...</div>}
       {error && <div className="status-message error">Error: {error}</div>}
